@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://8tkb5e4btr4f"]
+
+[ext_resource type="Texture2D" uid="uid://xdgv7xqbokk7" path="res://resources/player.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cira8f6cpk77y" path="res://Player.cs" id="1_onrkg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4flbx")
+}],
+"loop": true,
+"name": &"cuadrado_negro",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 9.0
+height = 18.0
+
+[node name="player" type="Area2D" unique_id=1304026877]
+script = ExtResource("1_onrkg")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1643601240]
+sprite_frames = SubResource("SpriteFrames_onrkg")
+animation = &"cuadrado_negro"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=976494106]
+shape = SubResource("CapsuleShape2D_onrkg")

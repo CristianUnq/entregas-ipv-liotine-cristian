@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://crn8fgoixrdj3"]
+
+[ext_resource type="PackedScene" uid="uid://8tkb5e4btr4f" path="res://player.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node" unique_id=748740421]
+
+[node name="Fondo" type="ColorRect" parent="." unique_id=395960198]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Piso" type="ColorRect" parent="." unique_id=1443516308]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -332.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(1.6123802e-06, 0.49924988, 0.23782161, 1)
+
+[node name="player" parent="." unique_id=1304026877 instance=ExtResource("1_ig7tw")]
+position = Vector2(232, 356)
