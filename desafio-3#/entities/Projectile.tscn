@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dkin2lofbkl5n"]
+
+[ext_resource type="Script" uid="uid://doonhavy1hx6f" path="res://entities/Projectile.cs" id="1_en0xg"]
+
+[node name="Projectile" type="Sprite2D" unique_id=491183498]
+script = ExtResource("1_en0xg")
+
+[node name="LifetimeTimer" type="Timer" parent="." unique_id=793125055]

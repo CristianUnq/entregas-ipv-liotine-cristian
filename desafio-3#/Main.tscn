@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dnc5muoeyfwah"]
+
+[ext_resource type="PackedScene" uid="uid://bxlu7r08pugq3" path="res://entities/player/Player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
+[ext_resource type="Script" uid="uid://cpcxrao61rmwd" path="res://Main.cs" id="3"]
+[ext_resource type="Script" uid="uid://c38yw2hfrbnrh" path="res://entities/enemies/TurretSpawner.cs" id="5_fos0i"]
+[ext_resource type="Texture2D" uid="uid://dwg3vpmlm24nh" path="res://assets/textures/floor.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="6_3dxm6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+size = Vector2(66.00006, 66.00005)
+
+[node name="Main" type="Node" unique_id=1161984879]
+script = ExtResource("3")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2077352361]
+anchors_preset = -1
+anchor_left = -0.36900002
+anchor_right = 1.572
+anchor_bottom = 1.404
+offset_left = 0.088012695
+offset_right = 0.055908203
+offset_bottom = 0.20794678
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+expand_mode = 1
+
+[node name="Player" parent="." unique_id=1840147176 instance=ExtResource("1")]
+position = Vector2(413.003, 395.272)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=457212794]
+position = Vector2(150, 513.5)
+scale = Vector2(12.1212, 2.62121)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=82770812]
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1597901197]
+position = Vector2(3.8146973e-06, 0)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="Floor2" type="StaticBody2D" parent="." unique_id=1195602508]
+position = Vector2(1300, 513.5)
+scale = Vector2(12.1212, 2.62121)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor2" unique_id=2074067785]
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" unique_id=336946943]
+position = Vector2(3.8146973e-06, 0)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="TurretsSpawner" type="Node" parent="." unique_id=1332684636]
+script = ExtResource("5_fos0i")
+TurretScene = ExtResource("6_3dxm6")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=51802523]
