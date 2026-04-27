@@ -53,12 +53,15 @@ public partial class Player : CharacterBody2D
 
 		if (Input.IsActionJustPressed("fire_cannon"))
 		{
+			GD.Print("1. ¡Botón presionado!");
 			if (_projectileContainer == null)
 			{
 				_projectileContainer = GetParent();
+				GD.Print("2. Contenedor asignado");
 				_cannon.Set("ProjectileContainer", _projectileContainer);
 			}
 			_cannon.Call("Fire");
+			GD.Print("3. Intento llamar a Fire en el cañón");
 		}
 
 		// --- MOVIMIENTO HORIZONTAL ---
@@ -88,5 +91,23 @@ public partial class Player : CharacterBody2D
 		// automáticamente. Ya NO usamos "Position += ...". Tampoco le multiplicamos
 		// el delta acá, MoveAndSlide lo hace por detrás.
 		MoveAndSlide(); 
+		
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			KinematicCollision2D collision = GetSlideCollision(i);
+			
+			// Si chocamos con un RigidBody
+			if (collision.GetCollider() is RigidBody2D body)
+			{
+				// Aplicamos un impulso en la dirección del choque
+				// Multiplicamos por un valor (ej: 50.0f) para darle más fuerza
+			body.ApplyCentralImpulse(-collision.GetNormal() * 60.0f);
+			}
+		}
+	}
+	
+	public void Die() {
+		GD.Print("El player ha muerto.");
+		QueueFree();
 	}
 }

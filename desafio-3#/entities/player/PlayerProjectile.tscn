@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dkin2lofbkl5n" path="res://entities/Projectile.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://bgwqma6wob4dw" path="res://assets/textures/proyectile_player.png" id="2"]
-[ext_resource type="Script" uid="uid://djsw0rxrn045e" path="res://entities/player/Cannon.cs" id="3_oln1n"]
 
 [node name="PlayerProjectile" unique_id=2088652558 instance=ExtResource("1")]
+collision_layer = 128
+collision_mask = 32
+
+[node name="Sprite2D" parent="." index="1" unique_id=193994865]
 texture = ExtResource("2")
-script = ExtResource("3_oln1n")
-ProjectileScene = ExtResource("1")

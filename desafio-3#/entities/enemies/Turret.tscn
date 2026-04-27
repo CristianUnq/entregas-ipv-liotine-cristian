@@ -2,10 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://c1umtbyikidk0" path="res://assets/textures/turret.png" id="1"]
 [ext_resource type="Script" uid="uid://bgabtk8myehyp" path="res://entities/enemies/Turret.cs" id="2_ltjpe"]
-[ext_resource type="PackedScene" uid="uid://bq07ol3pgtu55" path="res://entities/enemies/TurretProjectile.tscn" id="3_x15t2"]
+[ext_resource type="PackedScene" uid="uid://dkin2lofbkl5n" path="res://entities/Projectile.tscn" id="3_x15t2"]
 
-[node name="Turret" type="Sprite2D" unique_id=511076426]
-texture = ExtResource("1")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15t2"]
+size = Vector2(32, 64)
+
+[node name="Turret" type="StaticBody2D" unique_id=1663020548]
+collision_layer = 32
 script = ExtResource("2_ltjpe")
 ProjectileScene = ExtResource("3_x15t2")
 
@@ -13,3 +16,13 @@ ProjectileScene = ExtResource("3_x15t2")
 
 [node name="FirePosition" type="Marker2D" parent="." unique_id=1210817372]
 position = Vector2(0, -30.0339)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1269931711]
+target_position = Vector2(0, 70)
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1698113400]
+texture = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766925745]
+shape = SubResource("RectangleShape2D_x15t2")

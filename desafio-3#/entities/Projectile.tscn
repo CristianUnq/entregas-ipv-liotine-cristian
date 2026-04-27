@@ -1,8 +1,23 @@
 [gd_scene format=3 uid="uid://dkin2lofbkl5n"]
 
+[ext_resource type="Texture2D" uid="uid://baoiu3dij5lcd" path="res://assets/textures/proyectile_turret.png" id="1_41r0v"]
 [ext_resource type="Script" uid="uid://doonhavy1hx6f" path="res://entities/Projectile.cs" id="1_en0xg"]
 
-[node name="Projectile" type="Sprite2D" unique_id=491183498]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2re0"]
+radius = 9.055386
+
+[node name="Projectile" type="Area2D" unique_id=1370813284]
+position = Vector2(3, -1)
+collision_layer = 64
+collision_mask = 2
 script = ExtResource("1_en0xg")
 
 [node name="LifetimeTimer" type="Timer" parent="." unique_id=793125055]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=193994865]
+texture = ExtResource("1_41r0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=362843718]
+shape = SubResource("CircleShape2D_g2re0")
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

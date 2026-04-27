@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Projectile : Sprite2D
+public partial class Projectile : Area2D
 {
 	// Referencia al Timer (equivalente a @onready)
 	private Timer _lifetimeTimer;
@@ -10,6 +10,8 @@ public partial class Projectile : Sprite2D
 	public float Velocity { get; set; } = 800.0f;
 
 	private Vector2 _direction;
+	
+	private StaticBody2D _turret;
 
 	public override void _Ready()
 	{
@@ -44,6 +46,16 @@ public partial class Projectile : Sprite2D
 			RemoveProjectile();
 		}
 	}
+	
+	public void OnBodyEntered(Node2D body) {
+		RemoveProjectile();
+		if(body is Player playerEntity) {
+			playerEntity.Die();
+		}
+		else if (body is Turret turretEntity) {
+			turretEntity.Die();
+		}
+	}
 
 	// El manejador del evento timeout
 	private void OnLifetimeTimerTimeout()
@@ -60,6 +72,7 @@ public partial class Projectile : Sprite2D
 			parent.RemoveChild(this);
 		}
 		
+		GD.Print("¡Me destruí! Choqué contra: ");
 		// Liberamos la memoria del nodo
 		QueueFree();
 	}

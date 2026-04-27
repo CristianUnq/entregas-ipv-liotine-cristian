@@ -4,13 +4,15 @@
 [ext_resource type="Script" uid="uid://cyyereiby54m0" path="res://entities/player/Player.cs" id="2_l3c03"]
 [ext_resource type="Texture2D" uid="uid://doiohr46lpdc7" path="res://assets/textures/cannon.png" id="3"]
 [ext_resource type="Script" uid="uid://djsw0rxrn045e" path="res://entities/player/Cannon.cs" id="4_eaotn"]
-[ext_resource type="PackedScene" uid="uid://dkin2lofbkl5n" path="res://entities/Projectile.tscn" id="5_g3lhm"]
+[ext_resource type="PackedScene" uid="uid://87ca1ebf3v14" path="res://entities/player/PlayerProjectile.tscn" id="5_g3lhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3lhm"]
 size = Vector2(64, 64)
 
 [node name="Player" type="CharacterBody2D" unique_id=2013700890]
 position = Vector2(-0.0635071, 0.165405)
+collision_layer = 3
+collision_mask = 5
 script = ExtResource("2_l3c03")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1666081382]

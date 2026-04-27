@@ -22,6 +22,7 @@ public partial class Cannon : Sprite2D
 	public void Fire()
 	{
 		// Verificamos que la escena del proyectil esté asignada en el Inspector
+		GD.Print("4. El método Fire se ejecutó");
 		if (ProjectileScene == null)
 		{
 			GD.PrintErr("Error: ProjectileScene no asignada en el Inspector de " + Name);

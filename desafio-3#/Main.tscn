@@ -3,56 +3,219 @@
 [ext_resource type="PackedScene" uid="uid://bxlu7r08pugq3" path="res://entities/player/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cwss7yl8udbui" path="res://assets/textures/background.png" id="2"]
 [ext_resource type="Script" uid="uid://cpcxrao61rmwd" path="res://Main.cs" id="3"]
-[ext_resource type="Script" uid="uid://c38yw2hfrbnrh" path="res://entities/enemies/TurretSpawner.cs" id="5_fos0i"]
 [ext_resource type="Texture2D" uid="uid://dwg3vpmlm24nh" path="res://assets/textures/floor.png" id="6"]
 [ext_resource type="PackedScene" uid="uid://bscjwoaotlcqc" path="res://entities/enemies/Turret.tscn" id="6_3dxm6"]
+[ext_resource type="Texture2D" uid="uid://j14wrxanwhni" path="res://assets/textures/player.png" id="7_lgr22"]
+[ext_resource type="Script" uid="uid://cvsu2nflvd8py" path="res://RigidBody2d.cs" id="7_trn2v"]
+[ext_resource type="Texture2D" uid="uid://bgwqma6wob4dw" path="res://assets/textures/proyectile_player.png" id="9_03owx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
-size = Vector2(66.00006, 66.00005)
+size = Vector2(65.91756, 40.630093)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trn2v"]
+size = Vector2(32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wkp8b"]
+radius = 17.0
+height = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03owx"]
+size = Vector2(47.5, 296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkp8b"]
+size = Vector2(68, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20pc6"]
+size = Vector2(61, 533)
 
 [node name="Main" type="Node" unique_id=1161984879]
 script = ExtResource("3")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2077352361]
 anchors_preset = -1
-anchor_left = -0.36900002
-anchor_right = 1.572
-anchor_bottom = 1.404
-offset_left = 0.088012695
-offset_right = 0.055908203
-offset_bottom = 0.20794678
+anchor_left = -0.272
+anchor_right = 2.6000001
+anchor_bottom = 1.6110001
+offset_left = 0.34402466
+offset_top = -17.0
+offset_right = -0.20019531
+offset_bottom = 0.072021484
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2")
 expand_mode = 1
 
 [node name="Player" parent="." unique_id=1840147176 instance=ExtResource("1")]
-position = Vector2(413.003, 395.272)
+position = Vector2(37.003, 395.272)
+collision_layer = 2
+
+[node name="Turret" parent="." unique_id=511076426 instance=ExtResource("6_3dxm6")]
+position = Vector2(438, 119)
+
+[node name="Turret2" parent="." unique_id=86499918 instance=ExtResource("6_3dxm6")]
+position = Vector2(1937, 119)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=51802523]
+offset = Vector2(759, -45)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=457212794]
-position = Vector2(150, 513.5)
+position = Vector2(401, 513.5)
 scale = Vector2(12.1212, 2.62121)
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=82770812]
+position = Vector2(0, -12.2080965)
+scale = Vector2(1, 0.6300577)
 texture = ExtResource("6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1597901197]
-position = Vector2(3.8146973e-06, 0)
+position = Vector2(3.8146973e-06, -12.208069)
 shape = SubResource("RectangleShape2D_3dxm6")
 
 [node name="Floor2" type="StaticBody2D" parent="." unique_id=1195602508]
-position = Vector2(1300, 513.5)
+position = Vector2(2144, 513.5)
 scale = Vector2(12.1212, 2.62121)
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor2" unique_id=2074067785]
+position = Vector2(0.6600007, -12.398852)
+scale = Vector2(1, 0.62138736)
 texture = ExtResource("6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" unique_id=336946943]
-position = Vector2(3.8146973e-06, 0)
+position = Vector2(0.5362396, -12.494232)
 shape = SubResource("RectangleShape2D_3dxm6")
 
-[node name="TurretsSpawner" type="Node" parent="." unique_id=1332684636]
-script = ExtResource("5_fos0i")
-TurretScene = ExtResource("6_3dxm6")
+[node name="CajaNegra" type="RigidBody2D" parent="." unique_id=1253244682]
+position = Vector2(-82, 0)
+collision_layer = 4
+collision_mask = 27
+freeze_mode = 1
+script = ExtResource("7_trn2v")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=51802523]
+[node name="Sprite2D" type="Sprite2D" parent="CajaNegra" unique_id=49384723]
+position = Vector2(373, 375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_lgr22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CajaNegra" unique_id=1880263482]
+position = Vector2(373, 375)
+shape = SubResource("RectangleShape2D_trn2v")
+
+[node name="CajaNegra2" type="RigidBody2D" parent="." unique_id=1972675483]
+position = Vector2(-82, 0)
+collision_layer = 8
+collision_mask = 23
+freeze_mode = 1
+script = ExtResource("7_trn2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="CajaNegra2" unique_id=1715476722]
+position = Vector2(373, 337)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_lgr22")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CajaNegra2" unique_id=1572902572]
+position = Vector2(373, 337)
+shape = SubResource("RectangleShape2D_trn2v")
+
+[node name="RuedaAmarilla" type="RigidBody2D" parent="." unique_id=1498616272]
+position = Vector2(-31, 19)
+collision_layer = 16
+collision_mask = 15
+freeze_mode = 1
+script = ExtResource("7_trn2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="RuedaAmarilla" unique_id=1877196558]
+position = Vector2(201, 312.00003)
+scale = Vector2(2, -1.752)
+texture = ExtResource("9_03owx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RuedaAmarilla" unique_id=614125926]
+position = Vector2(201, 312)
+shape = SubResource("CapsuleShape2D_wkp8b")
+
+[node name="PisoRojo" type="StaticBody2D" parent="." unique_id=209049302]
+position = Vector2(407, 0)
+
+[node name="ColorRect" type="ColorRect" parent="PisoRojo" unique_id=125052252]
+offset_left = 1252.0
+offset_top = 151.0
+offset_right = 1548.0
+offset_bottom = 198.0
+color = Color(0.6838492, 0.08518288, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PisoRojo" unique_id=147656718]
+position = Vector2(1400, 174.75)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_03owx")
+
+[node name="PisoRojo2" type="StaticBody2D" parent="." unique_id=1571765518]
+position = Vector2(-1078, 0)
+
+[node name="ColorRect" type="ColorRect" parent="PisoRojo2" unique_id=1877219853]
+offset_left = 1252.0
+offset_top = 151.0
+offset_right = 1548.0
+offset_bottom = 198.0
+color = Color(0.6838492, 0.08518288, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PisoRojo2" unique_id=1370426581]
+position = Vector2(1400, 174.75)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_03owx")
+
+[node name="Escalon" type="StaticBody2D" parent="." unique_id=1505667775]
+position = Vector2(-99, 44)
+
+[node name="ColorRect" type="ColorRect" parent="Escalon" unique_id=1716765495]
+offset_left = 1061.0
+offset_top = 323.0
+offset_right = 1129.0
+offset_bottom = 343.0
+color = Color(0.012911856, 0, 0.003283786, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalon" unique_id=72162299]
+position = Vector2(1095, 333)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="Escalon2" type="StaticBody2D" parent="." unique_id=773033904]
+position = Vector2(137, -13)
+
+[node name="ColorRect" type="ColorRect" parent="Escalon2" unique_id=258096817]
+offset_left = 1061.0
+offset_top = 323.0
+offset_right = 1129.0
+offset_bottom = 343.0
+color = Color(0.012911856, 0, 0.003283786, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalon2" unique_id=2098036067]
+position = Vector2(1095, 333)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="Escalon3" type="StaticBody2D" parent="." unique_id=527077685]
+position = Vector2(360, -76)
+
+[node name="ColorRect" type="ColorRect" parent="Escalon3" unique_id=770977564]
+offset_left = 1061.0
+offset_top = 323.0
+offset_right = 1129.0
+offset_bottom = 343.0
+color = Color(0.012911856, 0, 0.003283786, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Escalon3" unique_id=915143986]
+position = Vector2(1095, 333)
+shape = SubResource("RectangleShape2D_wkp8b")
+
+[node name="ParedGris" type="StaticBody2D" parent="." unique_id=903733216]
+position = Vector2(-536, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedGris" unique_id=1883544268]
+position = Vector2(505.5, 269.5)
+shape = SubResource("RectangleShape2D_20pc6")
+
+[node name="ColorRect" type="ColorRect" parent="ParedGris" unique_id=1996103386]
+offset_left = 475.0
+offset_top = 3.0
+offset_right = 536.0
+offset_bottom = 536.0
+color = Color(0.5211409, 0.5211405, 0.52114046, 1)

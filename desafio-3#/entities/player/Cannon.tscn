@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d2a2pltcq0duf"]
+
+[ext_resource type="Texture2D" uid="uid://doiohr46lpdc7" path="res://assets/textures/cannon.png" id="1_iqian"]
+[ext_resource type="Script" uid="uid://djsw0rxrn045e" path="res://entities/player/Cannon.cs" id="2_drwf4"]
+[ext_resource type="PackedScene" uid="uid://87ca1ebf3v14" path="res://entities/player/PlayerProjectile.tscn" id="3_ps27u"]
+
+[node name="Cannon" type="Sprite2D" unique_id=2019586539]
+texture = ExtResource("1_iqian")
+script = ExtResource("2_drwf4")
+ProjectileScene = ExtResource("3_ps27u")
+
+[node name="CannonTip" type="Marker2D" parent="." unique_id=1058372628]
+position = Vector2(15, 0)
