@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ds2nxkro2vjy2"]
+
+[ext_resource type="Script" uid="uid://dquq4lr7ui4kb" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://p4f34idnvyxh" path="res://fighter.tscn" id="1_ig7tw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0xm2m"]
+
+[node name="Main" type="Node" unique_id=2111364895]
+script = ExtResource("1_0xm2m")
+
+[node name="Oponente" parent="." unique_id=809182949 instance=ExtResource("1_ig7tw")]
+position = Vector2(276, 116)
+collision_layer = 4
+collision_mask = 3
+input_prefix = "f2_"
+start_facing_left = true
+
+[node name="HitboxPunch" parent="Oponente/Pivot" parent_id_path=PackedInt32Array(809182949, 1988816508) index="1" unique_id=1292444280]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxKick" parent="Oponente/Pivot" parent_id_path=PackedInt32Array(809182949, 1988816508) index="2" unique_id=992720228]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Fighter" parent="." unique_id=893427575 instance=ExtResource("1_ig7tw")]
+position = Vector2(103, 116)
+collision_layer = 2
+collision_mask = 5
+
+[node name="HitboxPunch" parent="Fighter/Pivot" parent_id_path=PackedInt32Array(893427575, 1988816508) index="1" unique_id=1292444280]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HitboxKick" parent="Fighter/Pivot" parent_id_path=PackedInt32Array(893427575, 1988816508) index="2" unique_id=992720228]
+collision_layer = 0
+collision_mask = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=603560568]
+position = Vector2(104, 219)
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=736073914]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1402072928]
+shape = SubResource("WorldBoundaryShape2D_0xm2m")
+
+[editable path="Oponente"]
+[editable path="Fighter"]
