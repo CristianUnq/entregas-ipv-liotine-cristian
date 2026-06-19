@@ -21,9 +21,11 @@ func handle_input(event: InputEvent) -> void:
 		transitioned.emit(self, "punch")
 		
 	elif event.is_action_pressed(player.input_prefix + "attackKick"):
+		print("toco tecla attackKick")
 		transitioned.emit(self, "kick")
 		
 	elif event.is_action_pressed(player.input_prefix + "punchUp"):
+		print("toco tecla punchUp")
 		transitioned.emit(self, "uppercut")
 
 func exit() -> void:

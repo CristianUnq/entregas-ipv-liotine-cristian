@@ -25,5 +25,4 @@ func exit() -> void:
 
 func _on_hitbox_kick_body_entered(body: Node2D) -> void:
 	var direccion_impacto = sign(body.global_position.x - player.global_position.x)
-	print(direccion_impacto)
 	body.recibe_impact(direccion_impacto, "normal")

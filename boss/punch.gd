@@ -26,5 +26,5 @@ func _on_hitbox_punch_body_entered(body: Node2D) -> void:
 	# averiguar de que lado esta el oponente para calcular para que lado es el impacto
 	#var posicion = body.global_position.x - player.global_position.x
 	var direccion_impacto = sign(body.global_position.x - player.global_position.x)
-	print(direccion_impacto)
+	print("Entro a HITBOXpiña")
 	body.recibe_impact(direccion_impacto, "normal")

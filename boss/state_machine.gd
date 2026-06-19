@@ -24,8 +24,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
+	if owner.has_method("evitar_equilibrio_sobre_rival"):
+		owner.evitar_equilibrio_sobre_rival()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if current_state:
 		current_state.handle_input(event)
 

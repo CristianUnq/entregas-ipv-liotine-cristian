@@ -2,10 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dquq4lr7ui4kb" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://p4f34idnvyxh" path="res://fighter.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bu3ao8w368rnc" path="res://camera_2d.gd" id="2_h2yge"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(33, 143.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(32, 143.5)
 
 [node name="Main" type="Node" unique_id=2111364895]
 script = ExtResource("1_0xm2m")
@@ -25,6 +32,10 @@ collision_mask = 2
 collision_layer = 0
 collision_mask = 2
 
+[node name="HitboxUppercut" parent="Oponente/Pivot" parent_id_path=PackedInt32Array(809182949, 1988816508) index="3" unique_id=714338472]
+collision_layer = 0
+collision_mask = 2
+
 [node name="Fighter" parent="." unique_id=893427575 instance=ExtResource("1_ig7tw")]
 position = Vector2(103, 116)
 collision_layer = 2
@@ -38,6 +49,10 @@ collision_mask = 4
 collision_layer = 0
 collision_mask = 4
 
+[node name="HitboxUppercut" parent="Fighter/Pivot" parent_id_path=PackedInt32Array(893427575, 1988816508) index="3" unique_id=714338472]
+collision_layer = 0
+collision_mask = 4
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=603560568]
 position = Vector2(104, 219)
 physics_material_override = SubResource("PhysicsMaterial_h2yge")
@@ -47,6 +62,23 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1402072928]
 shape = SubResource("WorldBoundaryShape2D_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1997570021 groups=["camara"]]
+position = Vector2(188, 145)
+zoom = Vector2(4, 4)
+script = ExtResource("2_h2yge")
+
+[node name="MuroIzquierdo" type="StaticBody2D" parent="Camera2D" unique_id=1524970646]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/MuroIzquierdo" unique_id=804423182]
+position = Vector2(-125.5, -0.25)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="MuroDerecho" type="StaticBody2D" parent="Camera2D" unique_id=336848018]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/MuroDerecho" unique_id=1123675558]
+position = Vector2(127, 1.75)
+shape = SubResource("RectangleShape2D_1bvp3")
 
 [editable path="Oponente"]
 [editable path="Fighter"]
