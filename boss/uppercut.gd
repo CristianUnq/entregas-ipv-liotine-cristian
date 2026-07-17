@@ -4,6 +4,7 @@ func enter() -> void:
 	# Frenamos al personaje para pegar la pina
 	player.velocity.x = 0
 	player.animation_player.play("uppercut")
+	player.uppercut_missed.play()
 
 func physics_update(delta: float) -> void:
 	# Aplicamos gravedad por si tiró la piña justo cuando estaba cayendo del aire

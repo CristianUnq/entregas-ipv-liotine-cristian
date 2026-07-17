@@ -22,6 +22,8 @@ func physics_update(delta: float) -> void:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
 		transitioned.emit(self, "idle")
 		
+	#if player.velocity != Vector2.ZERO:
+	#	player.move_and_slide()
 	player.move_and_slide()
 
 func handle_input(event: InputEvent) -> void:

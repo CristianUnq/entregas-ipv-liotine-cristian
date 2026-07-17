@@ -4,6 +4,8 @@ func enter() -> void:
 	# Frenamos al personaje para pegar la patada
 	player.velocity.x = 0
 	player.animation_player.play("kick")
+	player.kick_missed.play()
+	player.shout_kick.play()
 
 func physics_update(delta: float) -> void:
 	# Aplicamos gravedad por si patea en el aire o cayendo

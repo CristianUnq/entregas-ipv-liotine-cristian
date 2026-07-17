@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://6fq54y8phmpg"]
+
+[ext_resource type="Script" uid="uid://b2vx8dtxsubqw" path="res://hud.gd" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://bmbpa5txf81st" path="res://fonts/Xolonium-Regular.ttf" id="2_8sq4i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ctp"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.90588236, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sq4i"]
+bg_color = Color(0, 0.7019608, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_640wx"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.90588236, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a2258"]
+bg_color = Color(0, 0.7019608, 0, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=760376662]
+script = ExtResource("1_64ctp")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=472330285]
+offset_left = 9.0
+offset_top = 22.0
+offset_right = 277.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxFlat_64ctp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8sq4i")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="." unique_id=1196363443]
+offset_left = 366.0
+offset_top = 22.0
+offset_right = 633.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxFlat_640wx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a2258")
+value = 100.0
+show_percentage = false
+
+[node name="Winner" type="Label" parent="." unique_id=284807034]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -157.0
+offset_right = 240.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 40
+text = "Liu Kang wins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="." unique_id=594546179]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -53.0
+offset_right = 50.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 32
+text = "Fight"
+
+[node name="Label" type="Label" parent="." unique_id=20289246]
+offset_left = 11.0
+offset_top = 19.0
+offset_right = 85.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 16
+text = "Liu Kang"
+
+[node name="Label2" type="Label" parent="." unique_id=1511500724]
+offset_left = 557.0
+offset_top = 19.0
+offset_right = 631.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+text = "Scorpion"
+
+[node name="Message" type="Label" parent="." unique_id=893643659]
+offset_left = 276.0
+offset_top = 127.0
+offset_right = 369.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+theme_override_font_sizes/font_size = 32
+
+[node name="TimerLabel" type="Label" parent="." unique_id=123450585]
+offset_left = 302.0
+offset_top = 17.0
+offset_right = 342.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("2_8sq4i")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1143968441]
+wait_time = 80.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

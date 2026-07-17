@@ -23,22 +23,17 @@ func physics_update(delta: float) -> void:
 	if not player.is_on_floor():
 		player.velocity.y += player.gravity * delta
 	
-	print(player.velocity.x)
 	player.velocity.x = move_toward(player.velocity.x, 0, 1500 * delta)
 		
 	player.move_and_slide()
 	
 	print(player.velocity.x)
 	# Le preguntamos al AnimationPlayer si ya terminó de reproducir.
-	print("Esta reproduciendose el animation player de hit")
-	print(player.animation_player.is_playing())
 	if player.is_on_floor() and not player.animation_player.is_playing() :
 		print("aun no entro a ningun estado")
 		if player.tipo_golpe_recibido == "normal":
-			print("entro a idle")
 			transitioned.emit(self, "idle")
 		else: 
-			print("entro a laydown")
 			transitioned.emit(self, "layDown")
 
 func handle_input(event: InputEvent) -> void:

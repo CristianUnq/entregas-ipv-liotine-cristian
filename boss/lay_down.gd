@@ -20,4 +20,3 @@ func physics_update(delta: float) -> void:
 func exit() -> void:
 	player.standing_collision.set_deferred("disabled", false)
 	player.laying_collision.set_deferred("disabled", true)
-	print("Salió de estado Laying")
